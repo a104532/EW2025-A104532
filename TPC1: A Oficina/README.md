@@ -28,6 +28,9 @@ Para além disso também é possivél voltar na página atrás selecionando a op
 ---
 ## **Ficheiros Utilizados**
 
-- [`gerador.py`](https://github.com/a104532/PL2025-A104532/blob/main/TPC1/somador_onoff.py) → Script para organizar o dataset
+- [`gerador.py`](https://github.com/a104532/EW2025-A104532/blob/main/TPC1%3A%20A%20Oficina/gerador.py) → Script para organizar o dataset
 
-- [`servidor.js`](https://github.com/a104532/PL2025-A104532/blob/main/TPC1/somador_onoff.py) → Implementação do servidor
+- [`servidor.js`](https://github.com/a104532/EW2025-A104532/blob/main/TPC1%3A%20A%20Oficina/servidor.js) → Implementação do servidor
+
+- [`new_dataset.json`](https://github.com/a104532/EW2025-A104532/blob/main/TPC1%3A%20A%20Oficina/new_dataset.json) → Novo dataset criado
+
