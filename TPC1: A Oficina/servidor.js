@@ -109,8 +109,23 @@ http.createServer((req, res) => {
                 axios.get('http://localhost:3000/viaturas?_sort=matricula')
                     .then(result => {
                         var viaturas = result.data
+                        var contagemMarcas = {}
+                        viaturas.forEach(viatura => {
+                            if (contagemMarcas[viatura.marca]) {
+                                contagemMarcas[viatura.marca]++
+                            } else {
+                                contagemMarcas[viatura.marca] = 1
+                            }
+                        })
                         res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' })
                         res.write("<h1>Viaturas</h1>")
+                        res.write("<h2>Contagem por Marca</h2>")
+                        res.write("<ul>")
+                        for (const [marca, count] of Object.entries(contagemMarcas)) {
+                            res.write(`<li>${marca}: ${count}</li>`)
+                        }
+                        res.write("</ul>")
+                        res.write("<h2>Lista de Viaturas</h2>")
                         res.write("<ul>")
                         viaturas.forEach(viatura => {
                             res.write(`<li><a href='/viaturas/${viatura.matricula}'>${viatura.matricula}</a></li>`)
