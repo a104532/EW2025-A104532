@@ -18,7 +18,7 @@
 
 ## **Implementação**
 
-ara a implementação deste projeto, foi criado um servidor em Node.js (escola-server.js), responsável por servir as páginas do website, e um ficheiro (pages.js), que contém as funções responsáveis por gerar e enviar o HTML para as páginas do site.
+ara a implementação deste projeto, foi criado um servidor em Node.js `escola-server.js`, responsável por servir as páginas do website, e um ficheiro `pages.js`, que contém as funções responsáveis por gerar e enviar o HTML para as páginas do site.
 
 O programa disponibiliza páginas para alunos, cursos e instrumentos, cada uma com um funcionamento específico:
 
