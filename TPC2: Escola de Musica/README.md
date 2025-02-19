@@ -30,8 +30,8 @@ O programa disponibiliza páginas para alunos, cursos e instrumentos, cada uma c
 
 ## **Ficheiros Utilizados**
 
-- [`escola-server.js`](https://github.com/a104532/EW2025-A104532/blob/main/TPC1%3A%20A%20Oficina/gerador.py) → Implementação do servidor
+- [`escola-server.js`](https://github.com/a104532/EW2025-A104532/blob/main/TPC2%3A%20Escola%20de%20Musica/escola-server.js) → Implementação do servidor
 
-- [`pages.js`](https://github.com/a104532/EW2025-A104532/blob/main/TPC1%3A%20A%20Oficina/servidor.js) → Páginas HTML do programa
+- [`pages.js`](https://github.com/a104532/EW2025-A104532/blob/main/TPC2%3A%20Escola%20de%20Musica/pages.js) → Páginas HTML do programa
 
-- [`db.json`](https://github.com/a104532/EW2025-A104532/blob/main/TPC1%3A%20A%20Oficina/new_dataset.json) → Dataset Utilizado
+- [`db.json`](https://github.com/a104532/EW2025-A104532/blob/main/TPC2%3A%20Escola%20de%20Musica/db.json) → Dataset Utilizado
