@@ -23,8 +23,8 @@ De seguida foi necessário mudar nas `templates.js` de forma a conseguir voltar 
 
 ## **Ficheiros Utilizados**
 
-- [`alunos_server_skeleton.js`](https://github.com/a104532/EW2025-A104532/blob/main/TPC2%3A%20Escola%20de%20Musica/escola-server.js) → Implementação do servidor
+- [`alunos_server_skeleton.js`](https://github.com/a104532/EW2025-A104532/blob/main/TPC3%20%3A%20Alunos/alunos_server_skeleton.js) → Implementação do servidor
 
-- [`templates.js`](https://github.com/a104532/EW2025-A104532/blob/main/TPC2%3A%20Escola%20de%20Musica/pages.js) → Templates das páginas utilizadas
+- [`templates.js`](https://github.com/a104532/EW2025-A104532/blob/main/TPC3%20%3A%20Alunos/templates.js) → Templates das páginas utilizadas
 
-- [`alunos.json`](https://github.com/a104532/EW2025-A104532/blob/main/TPC2%3A%20Escola%20de%20Musica/db.json) → Dataset Utilizado
+- [`alunos.json`](https://github.com/a104532/EW2025-A104532/blob/main/TPC3%20%3A%20Alunos/alunos.json) → Dataset Utilizado
