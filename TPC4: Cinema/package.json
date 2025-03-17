@@ -1,0 +1,14 @@
+{
+  "name": "hello",
+  "version": "1.0.0",
+  "description": "Primeiro exemplo",
+  "main": "hello.js",
+  "scripts": {
+    "test": "node hello.js"
+  },
+  "author": "tomas",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
