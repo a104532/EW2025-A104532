@@ -2,7 +2,7 @@
 
 ## 1.1 Setup
 
-Fez-se os tratamentos dos dados contidos no `dataset.json` usando o programa [fix_dataset.py](https://github.com/gabrielRibeir0/EW2025-A104171/blob/main/ENGWEB2025-Afericao/fix_dataset.py) resultando no `dataset_books.json`.
+Fez-se os tratamentos dos dados contidos no `dataset.json` usando o programa [fix_dataset.py](https://github.com/a104532/EW2025-A104532/blob/main/ENGWEB2025-Afericao/fixjson.py) resultando no `dataset_books.json`.
 
 `py fix_dataset.py`
 
@@ -246,7 +246,7 @@ Res:
 ]
 ```
 
-## 1.3 e 2
+## 1.3 e 2 ApiLivros e InterfaceLivros
 
 Para correr o programa tem de ter o docker container a executar.
 Para o exercício 1.3, basta depois ir para à pasta apiLivros e dar `npm start`.
