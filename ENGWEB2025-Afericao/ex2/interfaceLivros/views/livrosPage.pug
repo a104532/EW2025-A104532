@@ -1,0 +1,26 @@
+extends layout
+block content
+  .w3-container.w3-padding
+    h1 Sistema de Gestão de Livros
+    table.w3-table-all
+      thead
+        tr
+          th ID
+          th Título
+          th Autor(es)
+          th Data de Publicação
+          th Páginas
+      tbody
+        each livro in livros
+          tr
+            td
+              a(href='/livro/' + livro._id)= livro._id
+            td= livro.title
+            td
+              if livro.author && livro.author.length
+                each author, index in livro.author
+                  a(href='/entidades/' + author)= author
+                  if index < livro.author.length - 1
+                    span , 
+            td= livro.publishDate
+            td= livro.pages

@@ -1,0 +1,42 @@
+extends layout
+block content
+  .w3-container.w3-padding
+    h1= livro.title
+    if livro.coverImg
+      img(src=livro.coverImg, alt='Capa do livro', style='width:300px')
+    p
+      strong ID: 
+      span= livro._id
+    p
+      strong Título: 
+      span= livro.title
+    p
+      strong Autor(es): 
+      if livro.author && livro.author.length
+        each author, index in livro.author
+          a(href='/entidades/' + author)= author
+          if index < livro.author.length - 1
+            span , 
+    p
+      strong Data de Publicação: 
+      span= livro.publishDate
+    p
+      strong Páginas: 
+      span= livro.pages
+    
+    if livro.description
+      p
+        strong Descrição: 
+        span= livro.description
+        
+    if livro.genres && livro.genres.length
+      p
+        strong Gêneros: 
+        span= livro.genres.join(', ')
+        
+    if livro.rating
+      p
+        strong Avaliação: 
+        span= livro.rating
+        
+    a(href='/') Voltar à página principal

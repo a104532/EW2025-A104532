@@ -1,0 +1,34 @@
+Especifica queries em MongoDB para responder às seguintes questões:
+. Quantos livros têm a palavra Love no título;
+R: db.livros.countDocuments({ title: /Love/i })
+
+
+. Quais os títulos dos livros, em ordem alfabética, em que um dos autores tem apelido Austen?
+R:
+db.livros.find(
+  { author: /Austen$/i },
+  { title: 1, _id: 0 }
+).sort({ title: 1 })
+
+
+
+. Qual a lista de autores (ordenada alfabeticamente e sem repetições)?
+R: db.livros.distinct("author").sort()
+
+
+. Qual a distribuição de livros por género (genre) (quantos livros tem cada género)?
+R:
+db.livros.aggregate([
+  { $unwind: "$genres" },
+  { $group: { _id: "$genres", total: { $sum: 1 } } },
+  { $sort: { total: -1 } }
+])
+
+
+. Quais os títulos dos livros e respetivos isbn, em ordem alfabética de título, em que um dos
+personagens (characters) é Sirius Black?
+R:
+db.livros.find(
+  { characters: "Sirius Black" },
+  { title: 1, isbn: 1, _id: 0 }
+).sort({ title: 1 })

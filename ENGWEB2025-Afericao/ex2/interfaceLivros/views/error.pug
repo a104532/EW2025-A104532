@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  .w3-container.w3-padding
+    .w3-panel.w3-pale-red.w3-leftbar.w3-border-red
+      h3 Erro
+      p= message
+    
+    if error && error.stack
+      .w3-code.w3-card.w3-padding
+        pre #{error.stack}
+    
+    .w3-container.w3-padding-16
+      a.w3-button.w3-teal(href='/')
+        i.fa.fa-home.w3-margin-right
+        | Voltar para a página principal
