@@ -24,7 +24,7 @@ createServer(function (req, res) {
             .catch(erro => {
                 console.log("Erro: " + erro)
                 res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
-                res.end('<p>Erro na obtenção de dados: ' + erro + '</p>')
+                res.end('<p>Erro na obtenção de dados dos alunos: ' + erro + '</p>')
             })
     } 
     else if(req.url == '/cursos'){
@@ -38,7 +38,7 @@ createServer(function (req, res) {
             .catch(erro => {
                 console.log("Erro: " + erro)
                 res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
-                res.end('<p>Erro na obtenção de dados: ' + erro + '</p>')
+                res.end('<p>Erro na obtenção de dados dos cursos: ' + erro + '</p>')
             })
     } 
     else if(req.url == '/instrumentos'){
@@ -52,7 +52,7 @@ createServer(function (req, res) {
             .catch(erro => {
                 console.log("Erro: " + erro)
                 res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
-                res.end('<p>Erro na obtenção de dados: ' + erro + '</p>')
+                res.end('<p>Erro na obtenção de dados dos instrumentos: ' + erro + '</p>')
             })
     } 
     else if(req.url.match(/\/alunos\/A[0-9]+$/)){
@@ -67,7 +67,7 @@ createServer(function (req, res) {
             .catch(erro => {
                 console.log("Erro: " + erro)
                 res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
-                res.end('<p>Erro na obtenção de dados: ' + erro + '</p>')
+                res.end('<p>Erro na obtenção de dados do aluno: ' + erro + '</p>')
             })
     } 
     else if(req.url.match(/\/cursos\/[A-Z]+\d+$/)){
@@ -85,12 +85,12 @@ createServer(function (req, res) {
             .catch(erro => {
                 console.log("Erro: " + erro)
                 res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
-                res.end('<p>Erro na obtenção de dados: ' + erro + '</p>')
+                res.end('<p>Erro na obtenção de dados dos alunos: ' + erro + '</p>')
             })
         }).catch(erro => {
             console.log("Erro: " + erro)
             res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
-            res.end('<p>Erro na obtenção de dados: ' + erro + '</p>')
+            res.end('<p>Erro na obtenção de dados do curso: ' + erro + '</p>')
         })
         
     } 
@@ -109,12 +109,12 @@ createServer(function (req, res) {
                 .catch(erro => {
                     console.log("Erro: " + erro)
                     res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
-                    res.end('<p>Erro na obtenção de dados: ' + erro + '</p>')
+                    res.end('<p>Erro na obtenção de dados dos alunos: ' + erro + '</p>')
                 })
         }).catch(erro => {
             console.log("Erro: " + erro)
             res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
-            res.end('<p>Erro na obtenção de dados: ' + erro + '</p>')
+            res.end('<p>Erro na obtenção de dados do  instrumento: ' + erro + '</p>')
         })
     } 
     else if(req.url.match(/w3\.css$/)){

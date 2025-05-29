@@ -268,7 +268,7 @@ export function genCursoDetalhePage(lalunos,curso, data) {
                  </div>
 
                 <div class="w3-container">
-                    <table class="w3-table-all">
+                    <table class="w3-table-all"> 
                         <tr>
                             <th>Id</th>
                             <th>Aluno</th>
