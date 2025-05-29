@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  a.w3-button.w3-blue(href='/') Página Principal
+  
+  table.w3-table-all.w3-hoverable
+    thead
+      tr.w3-blue
+        th ID Contrato
+        th Objeto
+        th Data Celebração
+        th Preço
+        th Entidade
+    tbody
+      each contrato in contratos
+        tr
+          td
+            a(href=`/${contrato._id}`)= contrato._id
+          td= contrato.objectoContrato
+          td= contrato.dataCelebracaoContrato
+          td= contrato.precoContratual
+          td
+            a(href=`/entidades/${contrato.NIPC_entidade_comunicante}`)= contrato.entidade_comunicante

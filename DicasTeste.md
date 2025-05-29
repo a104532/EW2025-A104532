@@ -118,6 +118,8 @@ Próximo comando: `mongosh` e depois `use (bd que quermos)`
 
 Usar comando: `npx express-generator --view=pug apiDados`
 
+Instalar dependências: `npm i` `npm i mongoose`
+
 No WWW :
 ```
 var port = normalizePort(process.env.PORT || 'porta');
@@ -150,14 +152,23 @@ db.once('open', function() {
 Criar pasta `models`
 Criar pasta `controllers`
 
+No fim testar: `npm start` e ver através do POSTMAN
 
 ## Criação da Interface do Utilizador
 
 Usar comando: `npx express-generator --view=pug UI`
 
+Instalar independências: `npm i` `npm i axios --save`
+
+No WWW :
+```
+var port = normalizePort(process.env.PORT || 'porta');
 
 
-
+function onListening() {
+  console.log('Listening on port http://localhost:' + port + '/dados');
+}
+```
 
 
 
