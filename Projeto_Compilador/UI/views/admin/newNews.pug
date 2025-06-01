@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+  .w3-container.w3-margin-top(style="max-width: 700px;")
+    h2 Nova Notícia
+
+    form(method="POST" action="/admin/news/new")
+      .w3-section
+        label(for="message") Mensagem
+        textarea.w3-input.w3-border(name="message", rows="5", required)
+
+      .w3-section
+        label
+          input(type="checkbox", name="publico")
+          |  Tornar notícia pública
+
+      button.w3-button.w3-green(type="submit")
+        i.fa.fa-paper-plane
+        |  Publicar
+
+      a.w3-button.w3-grey(href="/admin/news")
+        i.fa.fa-arrow-left
+        |  Cancelar

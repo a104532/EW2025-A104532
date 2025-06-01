@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "log_001",
+    "message": "Novo item criado com ID item_001",
+    "level": "info",
+    "timestamp": "2025-05-15T10:15:03Z"
+  },
+  {
+    "_id": "log_002",
+    "message": "Upload de arquivo completado",
+    "level": "info",
+    "timestamp": "2025-05-15T10:15:05Z"
+  },
+  {
+    "_id": "log_003",
+    "message": "Novo comentário adicionado ao item item_001",
+    "level": "info",
+    "timestamp": "2025-05-16T15:30:00Z"
+  },
+  {
+    "_id": "log_004",
+    "message": "Visibilidade do item item_001 alterada para público",
+    "level": "info",
+    "timestamp": "2025-05-17T09:45:22Z"
+  },
+  {
+    "_id": "log_005",
+    "message": "Usuário usr_001 autenticado com sucesso",
+    "level": "info",
+    "timestamp": "2025-05-18T08:30:10Z"
+  }
+]

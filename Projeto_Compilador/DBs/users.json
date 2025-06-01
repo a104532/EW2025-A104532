@@ -1,0 +1,26 @@
+[
+  {
+    "_id": "usr_001",
+    "email": "john@example.com",
+    "password": "$2a$10$N9qo8uLOickgx2ZMRZoMy...",
+    "auth": {
+      "method": "local",
+      "googleId": null,
+      "facebookId": null
+    },
+    "role": "produtor",
+    "socialProfiles": {
+      "twitter": "@johndoe"
+    }
+  },
+  {
+    "_id": "usr_002",
+    "email": "maria@example.com",
+    "password": "$2a$10$N9qo8uLOickgx2ZMRZoMy...",
+    "auth": {
+      "method": "google",
+      "googleId": "102345678901234567890"
+    },
+    "role": "consumidor"
+  }
+]

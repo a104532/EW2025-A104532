@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+  .w3-container.w3-margin-top
+    h1 Logs do Sistema
+
+    .w3-bar.w3-margin-bottom
+      a.w3-button.w3-grey(href="/admin")
+        i.fa.fa-arrow-left 
+        |  Voltar ao Painel
+      a.w3-button.w3-red.w3-right(href="/auth/logout")
+        i.fa.fa-sign-out-alt 
+        |  Logout
+
+    if logs && logs.length
+      .w3-responsive
+        table.w3-table-all
+          thead
+            tr.w3-blue
+              th Timestamp
+              th Nível
+              th Mensagem
+          tbody
+            each log in logs
+              tr
+                td= log.timestamp || '-'
+                td
+                    span.w3-tag.w3-light-grey= log.level
+                td= log.message || '-'
+    else
+      .w3-panel.w3-yellow
+        p Nenhum log encontrado.

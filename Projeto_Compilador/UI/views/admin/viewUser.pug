@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+  .w3-container
+    h2.w3-text-teal Ver Utilizador
+
+    .w3-card.w3-padding
+      h3.w3-text-grey Dados Pessoais
+
+      p
+        strong Email:
+        | #{targetUser.email}
+
+      p
+        strong ID (username):
+        | #{targetUser._id}
+
+      p
+        strong Autenticação:
+        | #{(targetUser.auth && targetUser.auth.method) || 'local'}
+
+      if targetUser.auth && targetUser.auth.googleId
+        p
+          strong Google ID:
+          | #{targetUser.auth.googleId}
+
+      p
+        strong Role:
+        | #{targetUser.role}
+
+
+      form(style="display: inline;" method="POST" action=`/admin/users/${user._id}/delete`)            
+        a.w3-button.w3-blue(href=`/admin/users/${targetUser._id}/edit`) Editar
+      a.w3-button.w3-light-grey(href='/admin/users') Voltar
+

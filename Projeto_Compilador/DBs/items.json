@@ -1,0 +1,22 @@
+[
+  {
+    "_id": "item_001",
+    "nome": "Passeio nas Montanhas",
+    "dataCriacao": "2023-06-15T09:00:00Z",
+    "tipoItem": "Desporto",
+    "produtor": "usr_001",
+    "publico": true,
+    "ficheiros": ["file_001", "file_002"],
+    "comentarios": [{ "$oid": "6657f8d8e1b9f9a9f9a9f9a9" }] 
+  },
+  {
+    "_id": "item_002",
+    "nome": "Artigo sobre IA",
+    "dataCriacao": "2025-05-10T14:00:00Z",
+    "tipoItem": "Tecnologia",
+    "produtor": "usr_001",
+    "publico": false,
+    "ficheiros": ["file_003"],
+    "comentarios": [] 
+  }
+]

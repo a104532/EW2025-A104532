@@ -1,0 +1,10 @@
+{
+  "nome": "Meu Primeiro SIP",
+  "tipoItem": "Educação",
+  "descricao": "Exemplo de upload SIP",
+  "publico": false,
+  "dataCriacao": "2023-01-01",
+  "ficheiros": [
+    {"caminho": "documento.pdf"}
+  ]
+}

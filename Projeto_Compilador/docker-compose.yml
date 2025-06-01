@@ -1,0 +1,46 @@
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    healthcheck:
+      test: ["CMD", "mongo", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 30s
+      retries: 3
+
+  api:
+    build:
+      context: ./apiDados
+      dockerfile: Dockerfile
+    container_name: api
+    ports:
+      - "17000:17000"
+    environment:
+      - MONGODB_URI=mongodb://root:example@mongodb:27017/ew_database?authSource=admin
+      - JWT_SECRET=your_jwt_secret
+    depends_on:
+      mongodb:
+        condition: service_healthy
+
+  ui:
+    build:
+      context: ./UI
+      dockerfile: Dockerfile
+    container_name: ui
+    ports:
+      - "18000:18000"
+    environment:
+      - API_BASE_URL=http://api:17000
+    depends_on:
+      - api
+
+volumes:
+  mongodb_data:

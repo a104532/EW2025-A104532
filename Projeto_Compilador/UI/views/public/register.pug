@@ -1,0 +1,34 @@
+extends ../layout
+
+block content
+  .w3-container.w3-card-4.w3-margin(style="max-width: 500px; margin: auto;")
+    h2.w3-indigo.w3-padding Registro
+    form(method="POST" action="/auth/register")
+      .w3-section
+        label.w3-text-indigo(for="email") Email:
+        input.w3-input.w3-border(type="email" id="email" name="email" required)
+      .w3-section
+        label.w3-text-indigo(for="username") Username:
+        input.w3-input.w3-border(type="text" id="username" name="username")
+      .w3-section
+        label.w3-text-indigo(for="password") Password:
+        input.w3-input.w3-border(type="password" id="password" name="password" required)
+      .w3-section
+        label.w3-text-indigo(for="confirmPassword") Confirmar Password:
+        input.w3-input.w3-border(type="password" id="confirmPassword" name="confirmPassword" required)
+      .w3-section
+        button.w3-button.w3-indigo.w3-block(type="submit") Registrar
+      if error
+        .w3-panel.w3-red.w3-padding
+          p= error
+    .w3-section
+      p Já tem conta? 
+        a.w3-text-indigo(href="/auth/login") Faça login aqui
+    
+    .w3-section.w3-border-top.w3-padding-top
+      p.w3-center Ou registre-se com:
+      .w3-row.w3-margin-top
+        .w3-col.s6.w3-padding-small
+          a.w3-button.w3-block.w3-red(href="/auth/google" style="text-decoration: none;")
+            i.fa.fa-google(style="margin-right: 8px;")
+            | Google

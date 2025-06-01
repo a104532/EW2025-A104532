@@ -1,0 +1,73 @@
+extends ../layout
+
+block content
+  .w3-container.w3-margin-top
+    h1 Área de Administração
+
+    // Barra de ações
+    .w3-bar.w3-margin-bottom
+      a.w3-button.w3-blue(href="/admin/users")
+        i.fa.fa-users
+        |  Utilizadores
+      a.w3-button.w3-green(href="/admin/news")
+        i.fa.fa-archive
+        |  News
+      a.w3-button.w3-pink(href="/admin/new")
+        i.fa.fa-plus 
+        |  Novo Item
+      a.w3-button.w3-grey(href="/admin/logs")
+        i.fa.fa-file-alt
+        |  Logs
+      a.w3-button.w3-red.w3-right(href="/auth/logout")
+        i.fa.fa-sign-out-alt
+        |  Logout
+
+    // Painel de boas-vindas
+    .w3-panel.w3-light-grey
+      h4 Bem-vindo, #{user.email}!
+      p Use os botões acima para aceder às secções de administração.
+
+    .w3-row-padding.w3-margin-top
+      .w3-third
+        .w3-container.w3-card-4.w3-indigo
+        h3 #{stats.totalNews}
+        p Total de Visualizações do Conteúdo
+      .w3-third
+        .w3-container.w3-card-4.w3-teal
+        h3 #{stats.totalDownloads}
+        p Total de Downloads
+
+
+    // Lista de itens
+    if items && items.length
+      .w3-responsive
+        table.w3-table-all
+          thead
+            tr.w3-blue
+              th Nome
+              th Tipo
+              th Data
+              th Visibilidade
+              th Ações
+          tbody
+            each item in items
+              tr
+                td= item.nome
+                td= item.tipoItem
+                td= item.dataCriacaoFormatada
+                td
+                  if item.publico
+                    span.w3-tag.w3-green Público
+                  else
+                    span.w3-tag.w3-orange Privado
+                td
+                  a.w3-button.w3-blue.w3-small(href=`/admin/items/${item._id}`)
+                    i.fa.fa-eye
+                  |  
+                  a.w3-button.w3-green.w3-small(href=`/admin/items/${item._id}/edit`)
+                    i.fa.fa-edit
+                  |  
+                  form(style="display: inline;" method="POST" action=`/admin/items/${item._id}/delete`)
+                    button.w3-button.w3-red.w3-small(type="submit" onclick="return confirm('Tem certeza?')")
+                      i.fa.fa-trash
+

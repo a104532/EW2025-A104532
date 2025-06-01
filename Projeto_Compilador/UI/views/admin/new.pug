@@ -1,0 +1,31 @@
+extends ../layout
+
+block content
+  .w3-container(style="max-width: 600px; margin: auto;")
+    h1 Criar Novo Item via SIP
+
+    if error
+      .w3-panel.w3-red
+        p= error
+
+    form(method="POST" action="/admin/new" enctype="multipart/form-data")
+      .w3-section
+        label.w3-text-blue
+          b Pacote SIP (ZIP):
+          br
+          small O arquivo deve conter um manifesto-sip.json e os arquivos do item
+        input.w3-input.w3-border(type="file" name="sip" accept=".zip" required)
+
+      .w3-section
+        button.w3-button.w3-blue(type="submit") Enviar
+        |  
+        a.w3-button.w3-red(href="/admin") Cancelar
+
+      .w3-panel.w3-pale-blue
+        p
+          b Instruções:
+        ol.w3-small
+          li Crie um arquivo manifesto-sip.json com os metadados
+          li Coloque todos os arquivos do item em uma pasta
+          li Compacte tudo em um arquivo ZIP
+          li Envie o pacote completo

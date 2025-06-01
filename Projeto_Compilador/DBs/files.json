@@ -1,0 +1,23 @@
+[
+  {
+    "_id": "file_001",
+    "tipoFich": "imagem",
+    "caminho": "/storage/usr_001/2025/05/item_001/foto1.jpg",
+    "tamanho": 2456789,
+    "item": "item_001"
+  },
+  {
+    "_id": "file_002",
+    "tipoFich": "video",
+    "caminho": "/storage/usr_001/2025/05/item_001/video1.mp4",
+    "tamanho": 12567890,
+    "item": "item_001"
+  },
+  {
+    "_id": "file_003",
+    "tipoFich": "documento",
+    "caminho": "/storage/usr_001/2025/05/item_002/artigo.pdf",
+    "tamanho": 345678,
+    "item": "item_002"
+  }
+]

@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+  .w3-container(style="max-width: 600px; margin: auto;")
+    h1 Editar Item
+    
+    form(method="POST" action=`/admin/items/${item._id}/edit`)
+      .w3-section
+        label.w3-text-blue
+          b Nome:
+        input.w3-input.w3-border(type="text" name="nome" value=item.nome required)
+      
+      .w3-section
+        label.w3-text-blue
+          b Tipo:
+        select.w3-select.w3-border(name="tipoItem" required)
+          each tipo in tiposItem
+            option(value=tipo selected=(tipo === item.tipoItem))= tipo
+      
+      .w3-section
+        label.w3-text-blue
+          b Descrição:
+        textarea.w3-input.w3-border(name="descricaoItem" rows="4")= item.descricaoItem || ''
+      
+      .w3-section
+        button.w3-button.w3-blue(type="submit") Atualizar
+        |  
+        a.w3-button.w3-red(href=`/admin/items/${item._id}`) Cancelar
+      
+      if error
+        .w3-panel.w3-red
+          p= error

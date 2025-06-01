@@ -1,0 +1,107 @@
+extends ../layout
+
+block content
+  .w3-container.w3-margin-top
+    h1.w3-center Diário Digital - Conteúdos Públicos
+    
+    // Barra de navegação condicional (estilo melhorado)
+    .w3-bar.w3-margin-bottom.w3-card-2.w3-padding
+      if user
+        .w3-bar-item.w3-right
+          a.w3-button.w3-red(href="/auth/logout")
+            i.fa.fa-sign-out
+            |  Logout
+        .w3-bar-item.w3-right
+          span
+            i.fa.fa-user
+            |  Olá, #{user.username || user.email}!
+        if user.role === 'produtor'
+          .w3-bar-item
+            a.w3-button.w3-green(href="/producer")
+              i.fa.fa-edit
+              |  Área do Produtor
+        if user.role === 'admin'
+          .w3-bar-item
+            a.w3-button.w3-orange(href="/admin")
+              i.fa.fa-cog
+              |  Área Admin
+      else
+        .w3-bar-item.w3-right
+          a.w3-button.w3-green(href="/auth/login")
+            i.fa.fa-sign-in
+            |  Login
+        .w3-bar-item.w3-right
+          a.w3-button.w3-blue(href="/auth/register")
+            i.fa.fa-user-plus
+            |  Registrar
+
+    if noticias && noticias.length
+      hr
+      h2.w3-center.w3-margin-top Notícias
+      .w3-row-padding
+        each noticia in noticias
+          .w3-col.m6.w3-margin-bottom
+            .w3-card
+              .w3-container
+                p.w3-small
+                  i.fa.fa-calendar
+                  |  #{noticia.dataFormatada}
+                p= noticia.message
+
+    // Lista de itens públicos
+    if items && items.length
+      .w3-row-padding.w3-margin-top
+        each item in items
+          .w3-col.m4.w3-margin-bottom
+            .w3-card-4
+              header.w3-container(class=item.publico ? 'w3-blue' : 'w3-orange')
+                h3= item.nome
+                if !item.publico
+                  span.w3-tag.w3-red.w3-small Privado
+              .w3-container
+                p
+                  strong Tipo: 
+                  | #{item.tipoItem}
+                p
+                  strong Data: 
+                  | #{item.dataCriacaoFormatada}
+                if item.ficheiros && item.ficheiros.length
+                  .w3-panel.w3-light-grey
+                    h5
+                      i.fa.fa-paperclip
+                      |  Ficheiros (#{item.ficheiros.length})
+                    each file in item.ficheiros.slice(0, 3)
+                      .w3-tag.w3-round.w3-white.w3-border.w3-margin-right.w3-margin-bottom
+                        i.fa.fa-file-o
+                        |  #{file.nomeFicheiro || file.caminho.split('/').pop()}
+                    if item.ficheiros.length > 3
+                      .w3-tag.w3-round.w3-grey +#{item.ficheiros.length - 3} mais
+                
+                // Botões de ação
+                .w3-margin-top
+                  .w3-row
+                    .w3-col.s6
+                      a.w3-button.w3-blue.w3-block(href=`/items/${item._id}`)
+                        i.fa.fa-eye
+                        |  Ver Detalhes
+                    .w3-col.s6
+                      // CORREÇÃO: Botão de download DIP sempre disponível para itens públicos
+                      if item.publico
+                        a.w3-button.w3-green.w3-block(href=`/items/${item._id}/download-dip`)
+                          i.fa.fa-download
+                          |  Download DIP
+                      else
+                        // Para itens privados, ainda requer login
+                        if user
+                          a.w3-button.w3-green.w3-block(href=`/items/${item._id}/download-dip`)
+                            i.fa.fa-download
+                            |  Download DIP
+                        else
+                          a.w3-button.w3-grey.w3-block(href="/auth/login" title="Faça login para fazer download")
+                            i.fa.fa-lock
+                            |  Login p/ DIP
+    else
+      .w3-panel.w3-yellow
+        p
+          i.fa.fa-exclamation-circle
+          |  Nenhum conteúdo público disponível.

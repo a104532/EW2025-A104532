@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+  .w3-container.w3-margin-top(style="max-width: 700px;")
+    h2 Editar News
+
+    form(method="POST" action=`/admin/news/${news._id}/edit`)
+      .w3-section
+        label(for="message") Mensagem
+        textarea.w3-input.w3-border(name="message" rows="3" required)= news.message
+
+      .w3-section
+        label(for="publico") Visibilidade
+        select.w3-select(name="publico" required)
+          option(value="true" selected=news.publico) Público
+          option(value="false" selected=!news.publico) Privado
+
+      button.w3-button.w3-green(type="submit")
+        i.fa.fa-save
+        |  Guardar Alterações
+
+      a.w3-button.w3-grey(href="/admin/news")
+        i.fa.fa-arrow-left
+        |  Voltar

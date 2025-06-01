@@ -1,0 +1,128 @@
+extends ../layout
+
+block content
+  - const canViewPrivate = user && (user.role === 'admin' || user.role === 'produtor')
+  
+  if !item.publico && !canViewPrivate
+    .w3-container.w3-margin-top
+      .w3-panel.w3-red
+        h3 Acesso Restrito
+        p Este item é privado e você não tem permissão para visualizá-lo.
+  else
+    .w3-container(style="max-width: 800px; margin: auto;")
+      .w3-card-4
+        // Cabeçalho com indicação de visibilidade
+        header.w3-container(class=item.publico ? 'w3-blue' : 'w3-orange')
+          h1= item.nome
+          if item.tipoItem
+            span.w3-tag.w3-white= item.tipoItem
+          if !item.publico
+            span.w3-tag.w3-red.w3-margin-left Privado
+        
+        // Conteúdo do item
+        .w3-container
+          // Metadados
+          .w3-panel.w3-light-grey
+            p
+              strong Criado em: 
+              | #{item.dataCriacaoFormatada}
+            p
+              strong Submetido em: 
+              | #{item.dataSubmissaoFormatada}
+            p
+              strong Produtor: 
+              | #{item.produtor.email || item.produtor.username || 'Anônimo'}
+          
+          // Descrição
+          if item.descricaoItem
+            .w3-panel
+              h3 Descrição:
+              p= item.descricaoItem
+          
+          // Ficheiros
+          if item.ficheiros && item.ficheiros.length
+            h3.w3-border-bottom.w3-border-light-grey Ficheiros
+            .w3-row-padding
+              each file in item.ficheiros
+                .w3-col.s12.m6.l4.w3-margin-bottom
+                  .w3-card
+                    .w3-container.w3-center
+                      if file.tipoFich === 'imagem'
+                        img(src=`/api/files/${file._id}/download` style="max-width:100%; max-height:150px;")
+                      else
+                        i.fa.fa-file-o(style="font-size:48px;")
+                      p
+                        a(href=`/api/files/${file._id}/download`)= file.nomeFicheiro
+          
+          .w3-panel.w3-border-top
+            h3 Download do Pacote:
+            if item.publico
+              // Item público - qualquer pessoa pode fazer download
+              a.w3-button.w3-green.w3-large(href=`/items/${item._id}/download-dip`)
+                i.fa.fa-download
+                |  Download DIP (ZIP)
+              p.w3-small.w3-text-grey
+                | O DIP (Dissemination Information Package) contém todos os ficheiros e metadados deste item público.
+            else if user
+              // Item privado e usuário autenticado
+              a.w3-button.w3-green.w3-large(href=`/items/${item._id}/download-dip`)
+                i.fa.fa-download
+                |  Download DIP (ZIP)
+              p.w3-small.w3-text-grey
+                | O DIP (Dissemination Information Package) contém todos os ficheiros e metadados deste item.
+            else
+              // Item privado e usuário não autenticado
+              .w3-panel.w3-pale-yellow
+                p
+                  i.fa.fa-info-circle
+                  |  Para fazer download do DIP deste item privado, é necessário estar autenticado.
+                a.w3-button.w3-blue(href="/auth/login")
+                  i.fa.fa-sign-in
+                  |  Fazer Login
+          
+          // Comentários (visíveis para todos se o item for público)
+          if item.publico || canViewPrivate
+            if item.comentarios && item.comentarios.length
+              h3.w3-border-bottom.w3-border-light-grey Comentários (#{item.comentarios.length})
+              each comment in item.comentarios
+                .w3-panel.w3-border-left.w3-pale-blue
+                  p= comment.texto
+                  small= `Por ${comment.autor ? comment.autor._id || comment.autor.email : 'Anônimo'} em ${comment.dataCriacaoFormatada}`
+            
+            // Formulário de comentário (apenas para usuários logados e com permissão)
+            if user && (item.publico || canViewPrivate)
+              h3.w3-border-bottom.w3-border-light-grey Adicionar Comentário
+              form(method="POST" action=`/comments/${item._id}`)
+                .w3-section
+                  textarea.w3-input.w3-border(name="texto" rows="3" required)
+                button.w3-button.w3-blue(type="submit") Enviar
+          
+          // Ações (apenas para produtor/admin)
+          if canViewPrivate && (user.role === 'admin' || (user.role === 'produtor' && item.produtor._id == user.id))
+            .w3-panel.w3-border-top
+              h3 Ações:
+              a.w3-button.w3-green(href=`/producer/items/${item._id}/edit`)
+                i.fa.fa-edit 
+                |  Editar
+              |  
+              form(style="display: inline;" method="POST" action=`/producer/items/${item._id}/delete`)
+                button.w3-button.w3-red(type="submit" onclick="return confirm('Tem certeza?')")
+                  i.fa.fa-trash 
+                  |  Excluir
+              |  
+              form(style="display: inline;" method="POST" action=`/producer/items/${item._id}/visibility`)
+                input(type="hidden" name="publico" value=!item.publico)
+                if item.publico
+                  button.w3-button.w3-orange(type="submit")
+                    i.fa.fa-eye-slash 
+                    |  Tornar Privado
+                else
+                  button.w3-button.w3-blue(type="submit")
+                    i.fa.fa-eye 
+                    |  Tornar Público
+          
+          // Botão de voltar
+          .w3-panel
+            a.w3-button.w3-indigo(href=user && (user.role === 'admin' || user.role === 'produtor') ? '/producer' : '/')
+              i.fa.fa-arrow-left 
+              |  Voltar

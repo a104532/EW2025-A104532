@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+  .w3-container.w3-margin-top
+    h1 Notícias
+
+    .w3-bar.w3-margin-bottom
+      a.w3-button.w3-grey(href="/admin") 
+        i.fa.fa-arrow-left 
+        |  Voltar ao Painel
+      a.w3-button.w3-green(href="/admin/news/new")
+        i.fa.fa-plus 
+        |  Nova Notícia
+      a.w3-button.w3-red.w3-right(href="/auth/logout")
+        i.fa.fa-sign-out-alt 
+        |  Logout
+
+    if news && news.length
+      .w3-responsive
+        table.w3-table-all
+          thead
+            tr.w3-blue
+              th Data
+              th Visível
+              th Mensagem
+          tbody
+            each n in news
+              tr
+                td= n.timestamp || '-'
+                td= n.publico ? 'Sim' : 'Não'
+                td= n.message 
+
+    else
+      .w3-panel.w3-yellow
+        p Nenhuma notícia cadastrada.
